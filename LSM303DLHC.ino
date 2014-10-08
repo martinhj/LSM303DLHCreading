@@ -4,6 +4,7 @@
 #include <Adafruit_LSM303_U.h>
 
 
+
 Adafruit_LSM303_Accel_Unified accel = Adafruit_LSM303_Accel_Unified(54321);
 Adafruit_LSM303_Mag_Unified mag = Adafruit_LSM303_Mag_Unified(12345);
 
@@ -14,6 +15,7 @@ const float compass = 60.0;
 const int numberOfAxis = 6;
 const int numberOfReadings = 18;
 int index = 0;
+// readings from the calibration run.
 //acc x, y z, mag x, y, z:
 float minReadings[numberOfAxis] = 
   {-13.45, -13.18, -10.83, -43.27, -50.0, -56.12};
@@ -24,6 +26,8 @@ float readingSums[numberOfAxis];
 float sreadings[numberOfAxis][numberOfReadings];
 unsigned long lastprint = 0;
 
+
+
 void setup (void) {
   Serial.begin(115200);
   if (!mag.begin()) { Serial.println("w: mag"); }
@@ -32,7 +36,9 @@ void setup (void) {
     Serial.println("din't work out, did it?");
     while(1);
   }
-}
+} 
+
+
 
 void loop(void) {
   sensors_event_t accevent;
@@ -71,9 +77,12 @@ void loop(void) {
 }
 
 
+
 float map(float x, float in_min, float in_max, float out_min, float out_max) {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
+
+
 
 float populateReadings() {
   for (int i = 0; i < numberOfAxis; i++) {
