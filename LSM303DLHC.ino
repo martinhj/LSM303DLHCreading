@@ -41,7 +41,6 @@ void loop(void) {
   mag.getEvent(&magevent);
 
 
-  lastprint = millis();
   readings[0] = accevent.acceleration.x;
   readings[1] = accevent.acceleration.y;
   readings[2] = accevent.acceleration.z;
