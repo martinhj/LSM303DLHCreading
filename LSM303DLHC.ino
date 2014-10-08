@@ -26,7 +26,6 @@ unsigned long lastprint = 0;
 
 void setup (void) {
   Serial.begin(115200);
-  Serial.println("Test");
   if (!mag.begin()) { Serial.println("w: mag"); }
   if (!accel.begin()) { Serial.println("w: accel"); }
   if (!accel.begin() || !mag.begin()) {
