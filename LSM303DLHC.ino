@@ -55,25 +55,24 @@ void loop(void) {
   readings[5] = magevent.magnetic.z;
   populateReadings();
 
-  Serial.print(map(reading(0), minReadings[0],
-        maxReadings[0], -eGravity, eGravity));
+  Serial.print(map(0, eGravity));
   Serial.print(":");
-  Serial.print(map(reading(1), minReadings[1],
-        maxReadings[1], -eGravity, eGravity)); 
+  Serial.print(map(1, eGravity));
   Serial.print(":");
-  Serial.print(map(reading(2), minReadings[2],
-        maxReadings[2], -eGravity, eGravity)); 
+  Serial.print(map(2, eGravity));
   Serial.print(":");
-
-  Serial.print(map(reading(3), minReadings[3],
-        maxReadings[3], -compass, compass)); 
+  Serial.print(map(3, compass));
   Serial.print(":");
-  Serial.print(map(reading(4), minReadings[4],
-        maxReadings[4], -compass, compass)); 
+  Serial.print(map(4, compass));
   Serial.print(":");
-  Serial.print(map(reading(5), minReadings[5],
-        maxReadings[5], -compass, compass)); 
+  Serial.print(map(5, compass));
   Serial.println();
+}
+
+
+float map (int lindex, float multiplier) {
+  return map(reading(lindex), minReadings[lindex], maxReadings[lindex],
+    -multiplier, multiplier);
 }
 
 
