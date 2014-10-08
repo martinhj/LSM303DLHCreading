@@ -41,42 +41,34 @@ void loop(void) {
   mag.getEvent(&magevent);
 
 
-  //Serial.print("x- max"); Serial.print(xmax); Serial.print(" ");
-  //Serial.print("xflint: "); Serial.print(fl); Serial.print(" ");
-  /*Serial.print("xbit: "); */
-  /*Serial.print((int)lround(event.acceleration.x*100),BIN); Serial.print(" ");*/
-  /*Serial.print("xint: "); Serial.print((int)(event.acceleration.x*100)); Serial.print(" ");*/
-  //Serial.println(index); 
-  //if (millis() - lastprint > 200) {
-    lastprint = millis();
-    readings[0] = accevent.acceleration.x;
-    readings[1] = accevent.acceleration.y;
-    readings[2] = accevent.acceleration.z;
-    readings[3] = magevent.magnetic.x;
-    readings[4] = magevent.magnetic.y;
-    readings[5] = magevent.magnetic.z;
-    populateReadings();
+  lastprint = millis();
+  readings[0] = accevent.acceleration.x;
+  readings[1] = accevent.acceleration.y;
+  readings[2] = accevent.acceleration.z;
+  readings[3] = magevent.magnetic.x;
+  readings[4] = magevent.magnetic.y;
+  readings[5] = magevent.magnetic.z;
+  populateReadings();
 
-    Serial.print(map(reading(0), minReadings[0],
-          maxReadings[0], -eGravity, eGravity));
-    Serial.print(":");
-    Serial.print(map(reading(1), minReadings[1],
-          maxReadings[1], -eGravity, eGravity)); 
-    Serial.print(":");
-    Serial.print(map(reading(2), minReadings[2],
-          maxReadings[2], -eGravity, eGravity)); 
-    Serial.print(":");
+  Serial.print(map(reading(0), minReadings[0],
+        maxReadings[0], -eGravity, eGravity));
+  Serial.print(":");
+  Serial.print(map(reading(1), minReadings[1],
+        maxReadings[1], -eGravity, eGravity)); 
+  Serial.print(":");
+  Serial.print(map(reading(2), minReadings[2],
+        maxReadings[2], -eGravity, eGravity)); 
+  Serial.print(":");
 
-    Serial.print(map(reading(3), minReadings[3],
-          maxReadings[3], -compass, compass)); 
-    Serial.print(":");
-    Serial.print(map(reading(4), minReadings[4],
-          maxReadings[4], -compass, compass)); 
-    Serial.print(":");
-    Serial.print(map(reading(5), minReadings[5],
-          maxReadings[5], -compass, compass)); 
-    Serial.println();
-  //}
+  Serial.print(map(reading(3), minReadings[3],
+        maxReadings[3], -compass, compass)); 
+  Serial.print(":");
+  Serial.print(map(reading(4), minReadings[4],
+        maxReadings[4], -compass, compass)); 
+  Serial.print(":");
+  Serial.print(map(reading(5), minReadings[5],
+        maxReadings[5], -compass, compass)); 
+  Serial.println();
 }
 
 
