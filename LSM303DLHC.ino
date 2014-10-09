@@ -13,7 +13,7 @@ float x = 0;
 const float eGravity = 9.78;
 const float compass = 60.0;
 const int numberOfAxis = 6;
-const int numberOfReadings = 18;
+const int numberOfReadings = 18 * 2;
 int index = 0;
 // readings from the calibration run.
 //acc x, y z, mag x, y, z:
