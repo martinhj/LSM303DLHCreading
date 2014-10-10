@@ -79,16 +79,16 @@ void loop(void) {
 }
 
 
+/*
 float map (int lindex, float multiplier) {
   return reading(lindex);
 }
+*/
 
-/*
 float map (int lindex, float multiplier) {
   return map(reading(lindex), minReadings[lindex], maxReadings[lindex],
     -multiplier, multiplier);
 }
-*/
 
 
 
