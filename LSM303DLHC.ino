@@ -1,8 +1,8 @@
 /*
  *
  * This sketch takes the readings from the compass and accelerometer LSM303DLHC
- * breakout board from adafruit. It also uses the libraries developed for this
- * sensor by adafruit.
+ * breakout board from adafruit and prints it to the serial port. It also uses
+ * the libraries developed for this sensor by adafruit.
  *
  * It also uses an adapted smoothing method, smoothing all 6 axis from the
  * LSM303 sensor. It puts several readings in an array and calculates the
@@ -31,10 +31,19 @@ float readingSums[numberOfAxis];
 float sreadings[numberOfAxis][numberOfReadings];
 
 int index = 0;
-// readings from the calibration run.
-//acc x, y z, mag x, y, z:
+
+// readings from the calibration run. Using the calibration sketch from
+// Adafruit  to find these. You should create your own readings that represent
+// your own sensor.
+//
+//https://learn.adafruit.com/lsm303-accelerometer-slash-compass-breakout/calibration
+//
+// the order of the readings stored in the array:
+// acc x, y z, mag x, y, z:
+// calibration run lowest readings.
 float minReadings[numberOfAxis] = 
   {-13.45, -13.18, -10.83, -43.27, -50.0, -56.12};
+// calibration run highest readings.
 float maxReadings[numberOfAxis] = 
   {13.61, 11.96, 11.34, 57.09, 49.73, 52.04};
 
@@ -71,9 +80,15 @@ void loop(void) {
 
 
 float map (int lindex, float multiplier) {
+  return reading(lindex);
+}
+
+/*
+float map (int lindex, float multiplier) {
   return map(reading(lindex), minReadings[lindex], maxReadings[lindex],
     -multiplier, multiplier);
 }
+*/
 
 
 
